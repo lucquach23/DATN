@@ -1,0 +1,282 @@
+<!-- <a (click)="logout()" style="margin: 20px;" href="#"> Logout </a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTEHY</title>
+    <!-- import css -->
+    <!-- <link rel="stylesheet" href="../../assets/sv/css/main.css"> -->
+    <!-- <link rel="stylesheet" href="../../assets/sv/css/pages/revenue.css"> -->
+    <link rel="shortcut icon" href="/asset/icons/logoutehy.png">
+    <!--end import css -->
+</head>
+
+<body>
+    <!-- body web -->
+    <div>
+        <!-- navbar menu -->
+        <div id="navbar" class="navbar">
+            <div class="logo-site">
+                <div class="logo"></div>
+                UTEHY
+                <div class="toggle"></div>
+            </div>
+            <div class="nav-content">
+                <a routerLink="/register-sv/ctdt/ds-ctdt" routerLinkActive="item-ac" class="nav-item">
+                    <!-- <div class="nav-item-icon nav-item-overview"></div> -->
+
+                    <div class="glyphicon glyphicon-flag l-item"></div>
+                    <div class="nav-item-text">Chương trình đào tạo</div>
+                </a>
+                <a routerLink="/register-sv/mon-hoc/ds-mon-hoc" routerLinkActive="item-ac" class="nav-item">
+                    <!-- <div class="nav-item-icon nav-item-setplan"></div> -->
+                    <div class="glyphicon glyphicon-book l-item"></div>
+                    <div class="nav-item-text">Học phần</div>
+                </a>
+                <a routerLink="/register-sv/lop-mo/ds-lop-mo" routerLinkActive="item-ac" class="nav-item">
+                    <!-- <div class="nav-item-icon nav-item-withdraw"></div> -->
+                    <div class="glyphicon glyphicon-bullhorn l-item"></div>
+                    <div class="nav-item-text">Lớp mở</div>
+                </a>
+                <a routerLink="/register-sv/bang-bieu/ds-bang-bieu" routerLinkActive="item-ac" class="nav-item">
+                    <!-- <div class="nav-item-icon nav-item-invoices"></div> -->
+                    <div class="glyphicon glyphicon-list-alt l-item"></div>
+                    <div class="nav-item-text">Bảng điểm</div>
+                </a>
+                <a routerLink="/register-sv/thong-tin-ca-nhan/ttcn" routerLinkActive="item-ac" class="nav-item">
+                    <!-- <div class="nav-item-icon nav-item-collectionAndPayment"></div> -->
+                    <div class="glyphicon glyphicon-user l-item"></div>
+                    <div class="nav-item-text">Thông tin cá nhân</div>
+                </a>
+
+            </div>
+        </div>
+        <!-- end navbar menu -->
+
+        <!-- header -->
+        <div style="margin-top: 0;display: flex;height: 35px">
+            <div style="text-shadow: 1px -1px #0000ff;padding-top: 16px;padding-left: 71px;font-size: 23px;font-weight: bold;">
+
+                <marquee style="text-transform: uppercase;margin-left: -38px;width: 387px;">
+                    Trang đăng kí học phần cho sinh viên khoa CNTT
+                </marquee>
+            </div>
+            <div style="display: flex;display: flex;
+            right: 21px;
+            position: absolute;
+            height: 61px;line-height: 61px;" class="header-right">
+                <div class="point-pick">
+                    <div class="point-pick-icon"></div>
+                    <div style="padding-left: 5px;" class="point-pick-text"> [FIT] Trang đăng kí học phần dành cho sinh viên</div>
+                </div>
+
+
+                <div class="account"></div>
+                <div style="margin-right: 42px;">
+                    Hi, <b>{{this.tensv}}</b>
+                </div>
+                <div>
+                    <b><a (click)="logout()" href="#"> Đăng xuất </a></b>
+                </div>
+            </div>
+
+            <!-- <div style="height: 61px;">
+                <div style=" right: 111px;padding-top: 21px;position: absolute;">
+                    Hi, <b>{{this.tensv}}</b>
+                </div>
+                <div style=" right: 40px;padding-top: 21px;position: absolute;">
+                    <b><a (click)="logout()" href="#"> Đăng xuất </a></b>
+                </div>
+            </div> -->
+
+        </div>
+        <!-- end header -->
+
+        <!-- content -->
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+
+
+        <!-- end content -->
+    </div>
+    <!-- end body web -->
+
+
+
+    <!-- dialog   -->
+    <div>
+        <div class="m-dialog dialog-detail">
+            <div style="display: none;" id="dialog-add" class="m-dialog dialog-detail">
+                <div class="m-dialog dialog-modal"></div>
+                <div class="dialog-content">
+                    <div class="dialog-header">
+                        <div class="dialog-header-title">Thêm khoản thu</div>
+                        <div id="dialog-close" class="dialog-header-close">
+                            <button></button>
+                        </div>
+                    </div>
+                    <div class="dialog-body">
+                        <div class="content-form">
+                            <div class="content-left-input">
+                                <div class="form-group">
+                                    <label class="input-name" for="">Tên khoản thu *</label>
+                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="input-name">Thuộc nhóm khoản thu *</label>
+                                    <div class="group-form">
+                                        <select name="" id="" disabled="disabled" class="form-control">
+                                            <option value="">1</option>
+                                        </select>
+                                        <div class="btn-sum">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-salary">
+                                    <div class="form-group">
+                                        <label class="input-salary" for="">Mức thu *</label>
+                                        <input type="text" class="form-control-a" name="" id="" aria-describedby="helpId" placeholder="">
+                                        <label for="">đ /</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="input-salary" for="">Đơn vị tính *</label>
+                                        <select class="select-year" name="" id="" disabled="disabled">
+                                            <option value="day">Ngày</option>
+                                            <option value="month">Tháng</option>
+                                            <option value="year">Năm</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-name" for="">Phạm vi thu *</label>
+                                    <select name="" id="" disabled="disabled" class="form-control-conmon">
+                                        <option value="">Toàn trường</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-name" for="">Tính chất *</label>
+                                    <select name="" id="" disabled="disabled" class="form-control-conmon">
+                                        <option value="">1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-name" for="">Kỳ thu *</label>
+                                    <div class="year-radio-txt">
+                                        <label class="container">Tháng
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                        <label class="container">Quý
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                        <label class="container">Học kỳ
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                        <label class="container">Năm học
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-right-input">
+                                <div class="option-check">
+                                    <label class="title-check">Áp dụng miễn phí
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label class="title-check">Cho phép xuất chứng từ
+                                        <input type="checkbox">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label class="title-check">Khoản thu bắt buộc
+                                        <input type="checkbox">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label class="title-check">Cho phép hoàn trả
+                                        <input type="checkbox">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label class="title-check">Cho phép xuất hóa đơn
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label class="title-check">Thu nội bộ
+                                        <input type="checkbox">
+                                        <span class="checkmart"></span>
+                                      </label>
+                                    <label style="display: flex;" class="title-check title-check-regis">
+                                        <div class="divi-regis"></div>
+                                        <span>Phân loại đăng kí</span> 
+                                       
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dialog-footer">
+                        <button id="btnClose" class="m-btn-close">Đóng</button>
+                        <button id="btnCancel" class="m-btn-saveAdd">Lưu và thêm</button>
+                        <button id="btnSave" class="m-btn-save">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end dialog -->
+
+
+
+    <!-- alert delete -->
+    <div>
+        <div class="m-alert alert-detail">
+            <div style="display: none;" id="alert-delete" class="m-alert alert-detail">
+                <div class="m-alert alert-modal"></div>
+                <div class="alert-content">
+                    <div class="alert-header">
+                        <div class="alert-header-title">Thông báo</div>
+                        <div id="alert-close" class="alert-header-close">
+                            <button></button>
+                        </div>
+                    </div>
+                    <div class="alert-body">
+                        Bạn có chắc chắn muốn xóa những bản ghi đã chọn?
+                    </div>
+                    <div class="alert-footer">
+                        <button id="btnCancle" class="m-btn-close">Không</button>
+
+                        <button id="btnDelete" class="m-btn-save">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end alert delete -->
+
+
+    <style>
+        .l-item {
+            line-height: 42px;
+            font-size: 15px;
+            font-size: 20px;
+            margin-right: 8px;
+            color: #00FF00;
+        }
+    </style>
+
+
+    <!-- import js  -->
+    <script src="../../assets/sv/js/common/base.js"></script>
+    <!-- end import js -->
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+.l-lineh>td {
+    padding-top: 17px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#l-linehhead>th {
+    text-align: center;
+}
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Dropdown button on hover & focus */
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.m-dialog .dialog-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999;
+    opacity: .5;
+}
+
+.m-dialog .dialog-content {
+    position: absolute;
+    width: 910px;
+    height: 500px;
+    background-color: #F5F5F5;
+    z-index: 1000;
+    /* top: calc(50% - 139px);
+    left: calc(50% - 534px); */
+    padding: 24px;
+    border-radius: 5px;
+    position: fixed;
+    /* top: 5px; */
+    /* width: 100px; */
+    overflow: auto;
+    /* height: 100%; */
+}
+
+.l-margin-bottom {
+    line-height: 30px;
+}
+
+.l-mg-left {
+    margin-left: 30px;
+}
+
+.m-dialog .dialog-content .dialog-header-close button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 5px 0 0;
+    background-image: url(../../../../assets/sv/imgs/ic_close_16.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    opacity: .7;
+}
+
+.dialog-header-close button:hover {
+    background-color: transparent;
+}
+
+
+/* dialog header ************************************************************/
+
+.dialog-header-close button:hover {
+    background-color: transparent;
+}
+
+.dialog-header-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.m-dialog .dialog-content .dialog-header {
+    display: flex;
+}
+
+.m-dialog .dialog-content .dialog-header-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.m-dialog .dialog-content .dialog-header-close:hover {
+    border-radius: 5px;
+}

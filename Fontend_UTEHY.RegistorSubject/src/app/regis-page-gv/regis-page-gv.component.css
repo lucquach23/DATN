@@ -1,0 +1,219 @@
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: #7f8c8d;
+    text-decoration: none;
+  }
+  
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid #bdc3c7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+  }
+  
+  nav .logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  nav .logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  nav .logo__title {
+    color: blue;
+    text-transform: uppercase;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  
+  nav .logo__title div {
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  nav .exit {
+    padding: 10px;
+  }
+  
+  .link {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .main-content {
+    padding-top: 100px;
+  }
+  
+  .main-content aside {
+    position: fixed;
+    padding: 20px 10px 20px 20px;
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid #bdc3c7;
+  }
+  
+  .main-content aside ul {
+    list-style: disc;
+  }
+  
+  .main-content aside ul li {
+    margin-bottom: 10px;
+  }
+  
+  .main-content main {
+    padding: 0px 10px;
+    margin-left: 250px;
+  }
+  
+  .main-content main .breadcrumb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .main-content main .breadcrumb-item {
+    padding: 15px 30px;
+    background: #bdc3c7;
+    position: relative;
+    margin-right: 5px;
+    text-transform: uppercase;
+    color: green;
+    font-weight: 700;
+  }
+  
+  .main-content main .breadcrumb-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 30px solid white;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+  }
+  
+  .main-content main .breadcrumb-item::after {
+    content: "";
+    position: absolute;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    right: 0;
+    top: 0;
+    border-left: 30px solid #bdc3c7;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+    z-index: 1;
+  }
+  
+  .main-content main .breadcrumb-item:first-child::before {
+    display: none;
+  }
+  
+  .main-content main .input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .main-content main .input input,
+  .main-content main .input button {
+    /* height: 33px; */
+    width: 190px;
+    /* background-color: #bdc3c7; */
+    /* border: 1px solid #7f8c8d; */
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .main-content main table {
+    width: 100%;
+    border: 1px solid #7f8c8d;
+    border-collapse: collapse;
+  }
+  
+  .main-content main table caption {
+    margin-bottom: 10px;
+  }
+  
+  .main-content main table tr td {
+    padding: 10px;
+  }
+  
+  /* .main-content main table tr:first-child td {
+    background-color: #bdc3c7;
+  } */
+  
+  /* .main-content main table tr:last-child td {
+    background-color: #bdc3c7;
+    text-align: right;
+  } */
+  
+  /* .main-content main .btn-delete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  } */
+  
+  /* .main-content main .btn-delete button {
+    padding: 10px;
+    cursor: pointer;  
+  } */
+  
+  footer {
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00c4ff;
+    color: blue;
+    text-align: center;
+    padding: 10px;
+  }
+  .my-custom-scrollbar {
+    position: static;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    hr {
+      
+      border:1px solid gray;
+      
+      height:1px;
+      width:100%;
+    }
+    
+  /*# sourceMappingURL=style.css.map */

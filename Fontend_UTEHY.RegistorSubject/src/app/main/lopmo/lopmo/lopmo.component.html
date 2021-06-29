@@ -1,0 +1,657 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Trang chủ</a>
+        </li>
+        <li class="active">Danh sách lớp học phần</li>
+    </ul>
+    <div class="nav-search">
+        <p class="pull-right no-margin">
+
+        </p>
+    </div>
+</div>
+
+<div style="background-color: #f1f1f1" class="content-top">
+
+    <div id="btn-dangmo" (click)="DSDangMo()" class="content-top-item content-top-item-active">
+        Danh sách lớp học phần đang mở
+    </div>
+    <div id="btn-dadong" (click)="DSDaDong()" class="content-top-item">
+        Danh sách lớp học phần đã đóng
+    </div>
+    <div style="cursor: not-allowed;" id="btn-chitietlophocphan" class="content-top-item">
+        Chi tiết lớp học phần
+    </div>
+
+</div>
+
+
+<!-- đang mở -->
+<div style="display: none;" id="data-dangmo" class="row">
+    <div style="margin-left: 10px;" class="col-8">
+        <div class="container" style="display: flex;margin-top: 10px;text-align: left;margin-bottom: 10px;margin-left: 0px;">
+            <div>
+                <select id="val-ki" style="height: 42px;outline: none;margin-left: 7px;" class="btn btn-primary" (change)="selectOption($event.target.value)">
+                  <option value="1">Kì 1</option>
+                  <option value="2">Kì 2</option>
+                  <option value="3">Kì 3</option>
+                  <option value="4">Kì 4</option>
+                  <option value="5">Kì 5</option>
+                  <option value="6">Kì 6</option>
+                  <option value="7">Kì 7</option>
+                  <option value="8">Kì 8</option>
+                </select>
+            </div>
+            <div style="position: absolute; right: 10px;display: flex;">
+                <div>
+                    <button type="button" class="btn btn-primary" (click)="ThemMoiLMH()" style="outline: none;">
+                  <span class="glyphicon glyphicon-plus"></span> Thêm mới
+                </button>
+                </div>
+                <div style="margin-left: 5px;">
+                    <button (click)="CapNhatTrangThai()" style="outline: none;" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-remove"></span> Đóng lớp đã chọn
+                  </button>
+                </div>
+                <div style="margin-left: 5px;">
+                    <button (click)="DongAll()" style="outline: none;" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-remove"></span> Đóng tất cả các lớp
+                  </button>
+                </div>
+            </div>
+
+        </div>
+        <div style="padding: 0 22px 22px 22px;">
+            <table id="data-table" class="table table-bordered">
+                <thead>
+                    <tr id="l-linehhead">
+                        <th style="width: 5%;"></th>
+                        <th style="width: 20%;">
+                            Tên HP<br>
+                            <div style="display: flex">
+                                <span style="color: #339af0; font-size: 20px;line-height: 31px;" class="glyphicon glyphicon-filter"></span>
+                                <input (keyup.enter)="TimTenHP($event.target.value)" type="text" name="" id="">
+                            </div>
+                        </th>
+                        <th>Số TC</th>
+                        <th>Nhóm HP</th>
+                        <th>Giảng viên<br>
+                            <div style="display: flex">
+                                <span style="color: #339af0; font-size: 20px;line-height: 31px;" class="glyphicon glyphicon-filter"></span>
+                                <input (keyup.enter)="TimTenGV($event.target.value)" type="text">
+                            </div>
+                        </th>
+                        <th>SĐT</th>
+                        <th style="width: 7%;">Thời gian</th>
+                        <th style="width: 7%;">Tuần</th>
+                        <th style="width: 7%;">Phòng</th>
+                        <th>
+                            SLSV<br>
+                            <div style="margin-top: 10px;display: flex;">
+                                <i (click)="TuDuoiLen()" style="color: #339af0;  cursor: pointer; margin-right: 15px; font-size: 21px;" class="fas fa-angle-double-up"></i>
+                                <i (click)="TuTrenXuong()" style="color: #339af0;  cursor: pointer; font-size: 21px;" class="fas fa-angle-double-down"></i>
+                            </div>
+                        </th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="this.danh_sach_lop_hoc_phan==undefined; else elseTemplate">
+                        <tr>
+                            <td colspan="12"> <i>*Chọn học kì</i></td>
+                        </tr>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <tr class="l-lineh" id="tr{{tt+1}}" *ngFor="let i of this.danh_sach_lop_hoc_phan; index as tt">
+                            <td style="padding-bottom: 8px;">
+                                <input (click)="pushToArr('dangmo',i.maLopMonHoc,i.iCheck,tt)" [(ngModel)]="i.iCheck" value="{{i.maMonHoc}}" name="name{{tt+1}}" style="height: 20px; cursor: pointer;margin: 0px !important;" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </td>
+                            <td style="text-align: left;">{{ i.tenMonHoc}}</td>
+                            <td>{{ i.soTinChi}}</td>
+                            <td>{{this.convertNhomTC(i.nhomTuChon) }}</td>
+                            <td>{{ i.tenGiangVien}}</td>
+                            <td>{{i.soDienThoai }}</td>
+                            <td>{{i.thoiGian }}</td>
+                            <td>{{i.tuanHoc }}</td>
+                            <td>{{ i.phongHoc}}</td>
+                            <td>{{ i.soLuongSVDangKi}}</td>
+                            <td>{{this.convertTTL(i.trangThaiLop)}}</td>
+                            <td style="cursor: pointer;">
+                                <i (click)="SuaLop(i.maLopMonHoc,i.tenMonHoc,i.tenGiangVien,i.thoiGian,i.tuanHoc,i.phongHoc)" style="color: #15aabf; font-size: 21px;" class="fas fa-cog">
+                            </i>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- end đang mở -->
+
+
+
+<!-- đã đóng ----------------------------------->
+<div style="display: none;" id="data-dadong" class="row">
+    <div style="margin-left: 10px;" class="col-8">
+        <div class="container" style="display: flex;margin-top: 0px;text-align: left;margin-bottom: 10px;margin-left: 0px;">
+            <div style="margin-left: 10px;">
+                <button (click)="HuyLopKhongDuDieuKien()" style="outline: none;" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-trash"></span> Hủy tất cả lớp không đủ điều kiện
+                  </button>
+            </div>
+            <div style="margin-left: 10px;">
+                <button (click)="MoLaiLop()" style="outline: none;" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-refresh"></span> Mở lớp đã chọn
+                  </button>
+            </div>
+        </div>
+        <div style="padding: 0 22px 0px 22px;">
+            <table style="margin-bottom: 0;" id="data-table" class="table table-bordered">
+                <thead>
+                    <tr id="l-linehhead">
+                        <th>STT</th>
+                        <th style="width: 5%;"></th>
+
+                        <th style="width: 20%;">
+                            Tên HP
+                        </th>
+                        <th>Số TC</th>
+                        <th>Nhóm HP</th>
+                        <th>Kì</th>
+                        <th style="width: 7%;">Thời gian</th>
+                        <th style="width: 7%;">Tuần</th>
+                        <th style="width: 7%;">Phòng</th>
+                        <th>
+                            SLSV
+
+                        </th>
+                        <th>Trạng thái</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="l-lineh" id="trDD{{tt+1}}" *ngFor="let i of this.dataPhanTrangDSDaDong; index as tt">
+                        <td>{{i.rowNum}}</td>
+                        <td style="padding-bottom: 8px;">
+                            <input (click)="pushToArr('dadong',i.maLopMonHoc,i.iCheck,tt)" [(ngModel)]="i.iCheck" value="{{i.maMonHoc}}" name="name{{tt+1}}" style="height: 20px; cursor: pointer;margin: 0px !important;" class="form-check-input" type="checkbox">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </td>
+                        <td style="text-align: left;">{{ i.tenMonHoc}}</td>
+                        <td>{{ i.soTinChi}}</td>
+                        <td>{{this.convertNhomTC(i.nhomTuChon) }}</td>
+                        <td>{{i.hocKi}}</td>
+                        <td>{{i.thoiGian }}</td>
+                        <td>{{i.tuanHoc }}</td>
+                        <td>{{ i.phongHoc}}</td>
+                        <td style="cursor: pointer;" id="hov-chitiet" (click)="ShowChiTietLopHocPhan(i.maLopMonHoc,i.maMonHoc,i.tenMonHoc,i.soTinChi,i.soTinChiLiThuyet,i.soTinChiThucHanh,i.tenGiangVien,i.email,i.soDienThoai)">{{ i.soLuongSVDangKi}}</td>
+                        <td>{{this.convertTTL(i.trangThaiLop)}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="position: relative;">
+        <div style="position: absolute;left:292px; top: 0px;">
+            <div class="pagination">
+                <a (click)="this.PhanTrangLopDaDong(1,this.tong_so_ban_ghi_ds_da_dong)" value="first">Trang đầu</a>
+                <a (click)="luiPage()" value="">
+                    < </a>
+
+                        <a (click)="showtt($event.target)" id="t1" value="1">1</a>
+                        <a (click)="showtt($event.target)" id="t2" value="2">2</a>
+                        <a (click)="showtt($event.target)" id="t3" value="3">3</a>
+                        <a (click)="showtt($event.target)" id="t4" value="4">4</a>
+                        <a (click)="showtt($event.target)" id="t5" value="5">5</a>
+
+                        <a (click)="tienPage()" value=""> > </a>
+                        <a (click)="this.PhanTrangLopDaDong((this.tong_so_ban_ghi_ds_da_dong/6),this.tong_so_ban_ghi_ds_da_dong)" value="last">Trang cuối</a>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- end đã đóng ----------------------------------->
+
+
+
+
+
+<!-- chi tiet lop hoc phan -->
+
+<div style="display: none;" id="data-chitietlophocphan" class="row">
+    <div style="margin-left: 10px;" class="col-8">
+        <div class="container" style="margin-top: 0px;text-align: left;margin-bottom: 10px;margin-left: 0px;">
+            <div style="margin-bottom: 19px;margin-left: 25px;" id="data-trenbang">
+
+            </div>
+            <div id="dt-table-chitiet" style="padding: 0 22px 0px 22px;width: 100%;">
+                <div style="position: relative;">
+                    <div style="position: absolute; right: 0px;top: -48px;">
+                        <button (click)="downDSSV()" style="outline: none;" class="btn btn-success">
+                        <span class="glyphicon glyphicon-download-alt"></span> Tải xuống
+                    </button>
+                    </div>
+                </div>
+
+
+                <table style="margin-bottom: 0; width: 100%;" class="table table-bordered">
+                    <thead>
+                        <tr id="l-linehhead">
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Mã lớp</th>
+                            <th>Tên SV</th>
+                            <th>Ngày sinh</th>
+                            <th>GVCN</th>
+                            <th>SDT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of this.dschitietlhp;index as tt" class="l-lineh">
+                            <td>{{tt+1}}</td>
+                            <td>{{i.maSinhVien}}</td>
+                            <td>{{i.maLop}}</td>
+                            <td>{{i.tenSinhVien}}</td>
+                            <td>{{getFormattedDate(i.sinhNhat)}}</td>
+                            <td>{{i.gvcn}}</td>
+                            <td>{{i.sdt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- end chi tiet lop hoc phan -->
+
+
+
+
+
+
+
+
+<!-- modal them moi -->
+<div>
+    <div class="m-dialog dialog-detail">
+        <div style="display: none;" id="dialog-add" class="m-dialog dialog-detail">
+            <div class="m-dialog dialog-modal"></div>
+            <div id="dc" class="dialog-content">
+                <div class="dialog-header">
+                    <div class="dialog-header-title">THÊM MỚI LỚP MÔN HỌC</div>
+                    <div id="dialog-close" class="dialog-header-close">
+                        <button (click)="closeDialog()"></button>
+                    </div>
+                </div>
+                <div id="datachitiethp" style="padding-top: 15px;padding-left: 50px;" class="dialog-body">
+                    <form>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label for="inputAddress">Học phần</label>
+                                <input id="hocphan" style="outline: none;height: 34px;" list="dthocphan">
+                                <datalist id="dthocphan">
+                                    <option *ngFor="let i of this.list_hp" value="{{i.maMonHoc}} - {{i.tenMonHoc}}">
+                                    
+                                        
+                                </datalist>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputAddress">Giảng viên</label>
+                                <input style="outline: none;height: 34px;" id="giangvien" list="dtgiangvien">
+                                <datalist id="dtgiangvien">
+                                    <option *ngFor="let i of this.list_gv" value="{{i.maGiangVien}} - {{i.tenGiangVien}}">
+                                   
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Phòng học</label>
+                                <input type="text" class="form-control" id="phonghoc">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Thời gian</label>
+                                <input type="text" class="form-control" id="thoigian">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Tuần học</label>
+                                <input type="text" class="form-control" id="tuanhoc">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Số lượng sinh viên tối thiểu</label>
+                                <input type="text" class="form-control" id="minsv">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Số lượng sinh viên tối đa</label>
+                                <input type="text" class="form-control" id="maxsv">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Học kì</label>
+                                <input type="text" class="form-control" id="hocki">
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+                <div style="position: absolute; bottom: 25px;right: 70px;" class="dialog-footer">
+                    <button style="margin-right: 10px;outline: none;" id="btnClose" (click)="submitThemLMH()" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span> Thêm mới
+                    </button>
+                    <button style="outline: none;" id="btnClose" (click)="closeDialog()" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove"></span> Đóng
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal them moi -->
+
+
+
+
+
+
+
+<!-- modal sua lop -------------------------------------------->
+<div>
+    <div class="m-dialog dialog-detail">
+        <div style="display: none;" id="dialog-sua" class="m-dialog dialog-detail">
+            <div class="m-dialog dialog-modal"></div>
+            <div id="sua" class="dialog-content">
+                <div class="dialog-header">
+                    <div class="dialog-header-title">SỬA LỚP HỌC PHẦN</div>
+                    <div id="dialog-close" class="dialog-header-close">
+                        <button (click)="closeFormSua()"></button>
+                    </div>
+                </div>
+                <div style="padding-top: 15px;padding-left: 50px;" class="dialog-body">
+                    <form>
+
+                        <div class="form-row">
+                            <input type="text" hidden id="s-malopmonhoc">
+                            <div class="form-group col-sm-6">
+                                <label for="inputAddress">Học phần</label>
+                                <input disabled id="s-hocphan" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="inputAddress">Giảng viên</label>
+                                <input disabled class="form-control" id="s-giangvien">
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Phòng học</label>
+                                <input style="outline: none;height: 34px;" id="s-phonghoc" list="dtphong">
+                                <datalist id="dtphong">
+                                    <option value="ĐH104">
+                                    <option value="ĐH106">
+                                    <option value="ĐH107">
+                                    <option value="ĐH108">
+                                    <option value="ĐH205">
+                                    <option value="ĐH206">
+                                    <option value="ĐH301">
+                                    <option value="ĐH302">
+                                    <option value="ĐH303">
+                                    <option value="ĐH304">
+                                    <option value="ĐH314">
+                                    <option value="ĐH315">
+                                    <option value="ĐH305">
+                                    <option value="ĐH306">
+                                    <option value="ĐH307">
+                                    <option value="ĐH410">
+                                    <option value="ĐH412">
+                                    <option value="ĐH413">
+                                    <option value="ĐH415">
+                                    <option value="ĐH502">
+                                    <option value="ĐH501">
+                                    <option value="ĐH512">
+                                    <option value="ĐH513">
+                                    <option value="SVĐ">
+                                   
+                                </datalist>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Thời gian</label>
+                                <input class="form-control" id="s-thoigian">
+
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="inputAddress">Tuần học</label>
+                                <input type="text" class="form-control" id="s-tuanhoc">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-12">
+                                <label><b><i>Lưu ý: </i></b></label><br>
+                                <label for=""><b>Thời gian theo định dạng:</b> 'Thứ + Buổi (S,C,T)' cách nhau bởi dấu phẩy <i>(vd: 2S,3S,4C)</i></label><br>
+                                <label for="">Buổi S (sáng) tương đương với số tiết: 1234</label><br>
+                                <label for="">Buổi C (chiều) tương đương với số tiết: 6789</label><br>
+                                <label for="">Buổi T (tối) tương đương với số tiết: 0123</label><br>
+                                <label for=""><b>Tuần học theo định dạng:</b>12345678901</label><br>
+                                <label for="">Mỗi số tương đương với 1 tuần học, số 0 sau 9 được hiểu là tuần 10, tiếp theo số 1 được hiểu là tuần 11</label>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+
+                <div style="position: absolute; bottom: 25px;right: 70px;" class="dialog-footer">
+                    <button style="margin-right: 10px;outline: none;" id="btnClose" (click)="submitSuaLop()" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-cog"></span> Sửa lớp
+                    </button>
+                    <button style="outline: none;" id="btnClose" (click)="closeFormSua()" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove"></span> Đóng
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal sua lop ------------------------------------------>
+
+
+
+<!-- alert thông báo -->
+<div>
+    <div class="m-alert alert-detail">
+        <div style="display: none;" id="l-alert" class="m-alert alert-detail">
+            <div class="m-alert alert-modal"></div>
+            <div class="alert-content" id="alert-content">
+                <div class="alert-header">
+                    <div class="alert-header-title">
+                        <span style="font-size: 31px;top: 6px;margin-right: 10px;color: #438eb9;" class="glyphicon glyphicon-volume-up"></span> <span>THÔNG BÁO</span>
+                    </div>
+                    <div id="alert-close" class="alert-header-close">
+                        <button (click)="closeAlert()" style="background-color: #FFFFFF;"></button>
+                    </div>
+                </div>
+                <div id="alert-body" class="alert-body">
+
+                </div>
+                <div style="display: flex;" class="alert-footer">
+                    <button style="display: none;margin-right: 5px;outline: none;" id="btnYes" class="btn btn-success">
+                        <span style="padding-right: 7px;margin-left: -6px;" class="glyphicon glyphicon-ok"></span>Đồng ý
+                    </button>
+                    <button style="color: black; outline: none;" class="btn btn-secondary" (click)="closeAlert()">
+                        <span style="color: black;" class="glyphicon glyphicon-remove"></span>
+                        <span style="color: black;margin-left: 4px;">Đóng</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end alert thông báo -->
+
+<!-- css page -->
+<style>
+    #hov-chitiet:hover {
+        background-color: #ccc;
+    }
+    
+    .pagination {
+        display: inline-block;
+    }
+    
+    .pagination a {
+        border: 1px solid #ccc;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+<!-- end css page -->
+
+<style>
+    .content-top {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        background-color: #CCCCCC;
+        border-top: 1px solid #B1B1B1;
+        margin-bottom: 20px;
+    }
+    
+    .content-top .content-top-item {
+        padding: 0 30px 0 30px;
+        height: 40px;
+        line-height: 40px;
+        align-items: center;
+        opacity: .5;
+        cursor: pointer;
+    }
+    
+    .content-top-item-active {
+        border-top: 2px solid #0DD469;
+        background-color: white;
+        color: #0DD469;
+        opacity: 1!important;
+    }
+    
+    .m-alert {
+        position: static;
+    }
+    
+    .m-alert .alert-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        z-index: 999;
+        opacity: .5;
+    }
+    
+    .m-alert .alert-content {
+        position: fixed;
+        width: 325px;
+        height: auto;
+        background-color: #ffffff;
+        z-index: 1000;
+        top: 100px;
+        left: 530px;
+        padding: 24px;
+        border-radius: 5px;
+    }
+    /* alert header ************************************************************/
+    
+    .m-alert .alert-content .alert-header-close button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 0 5px 0 0;
+        /* // background-image: url(../../asset/imgs/ic_close_16.png); */
+        background-image: url(../../../../assets/sv/imgs/ic_close_16.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        opacity: .7;
+    }
+    
+    .alert-header-close button:hover {
+        background-color: transparent;
+    }
+    
+    .alert-header-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .m-alert .alert-content .alert-header {
+        display: flex;
+    }
+    
+    .m-alert .alert-content .alert-header-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    .m-alert .alert-content .alert-header-close:hover {
+        border-radius: 5px;
+    }
+    /* end alert header ************************************************************/
+    /* alert body *************************************************************/
+    
+    .alert-body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    /* end alert body *************************************************************/
+    /* alert footer *************************************************************/
+    
+    .alert-footer {
+        float: right;
+    }
+    
+    .alert-footer .m-btn-close {
+        margin-right: 8px;
+    }
+    
+    .m-btn-saveAdd {
+        margin: 0 8px 0 8px;
+    }
+</style>

@@ -1,0 +1,485 @@
+<div style="background-color: #0bcc6c" class="content-top">
+
+    <div id="btn-dslm" (click)="showdslm()" class="content-top-item content-top-item-active">
+        Danh sách lớp mở
+    </div>
+    <div id="btn-dslmddk" (click)="showdslmddk()" class="content-top-item">
+        Danh sách lớp đã đăng kí
+    </div>
+</div>
+
+<div style="padding:0 20px 0 20px;" id="ct-dslm">
+    <div class="noidungdslm">
+        <h4>DANH SÁCH LỚP MỞ</h4>
+        <div class="tableFixHead">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th style="width: 27%;">Học phần</th>
+                        <th style="width: 17%;">Giảng viên</th>
+                        <th>Tổng số TC</th>
+                        <th>Phòng học</th>
+                        <th>Thời gian</th>
+                        <th>Tuần học</th>
+                        <th>SLSV tối đa</th>
+                        <th>SLSV đã đăng kí</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #00BFFF;">
+                        <tr style="background-color: #B0E0E6;">
+                            <td colspan="3">
+                                <b><i>Học phần bắt buộc</i> - Sinh viên đăng kí những học phần sau (<i style="color: red;">Bắt buộc</i>)</b>
+                            </td>
+                            <td style="cursor: pointer;text-align: center;color: #03AE66;font-size: 15px;">
+                                <i (click)="sortBBup()" style="padding-right: 12px;" class="fas fa-arrow-up"></i>
+                                <i (click)="sortBBdown()" class="fas fa-arrow-down"></i>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let i of this.arrDsLopMoBB; index as tt">
+                            <td>{{tt+1}}</td>
+                            <!-- <td>{{i.maLopMonHoc}}</td> -->
+                            <td class="tenHP" title="Click để xem chi tiết" (click)="ChiTietHP(i.maMonHoc)">{{i.tenMonHoc}}</td>
+                            <td>{{i.tenGiangVien}}</td>
+                            <td style="text-align: center;">{{i.soTinChi}}</td>
+                            <td>{{i.phongHoc}}</td>
+                            <td>{{i.thoiGian}}</td>
+                            <td>{{i.tuanHoc}}</td>
+                            <td></td>
+                            <td></td>
+                            <td title="Đăng kí học phần này" class="hovDK" (click)="DangKiTCBT('TCBB',i.maLopMonHoc,i.maMonHoc,i.soTinChi,i.soLuongSVDangKi)" style="text-align: center;color: #099f75;cursor:pointer;font-size: 15px;"><i class="fas fa-pen"></i></td>
+                        </tr>
+                        <tr style="background-color: #B0E0E6;">
+                            <td *ngFor="let i of this.maxTCBoTro" colspan="3">
+                                <b><i>Nhóm {{i.tenMonHoc}} </i> - Sinh viên chọn đủ <i style="color: red;">{{i.soTCTCMax}}/{{i.soTinChi}}</i> tín chỉ</b>
+                            </td>
+                            <td style="cursor: pointer;text-align: center;color: #03AE66;font-size: 15px;">
+                                <i (click)="sortSTCBTup()" style="padding-right: 12px;" class="fas fa-arrow-up"></i>
+                                <i (click)="sortSTCBTdown()" class="fas fa-arrow-down"></i>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="cursor: pointer;text-align: center;color: #03AE66;font-size: 15px;">
+                                <i (click)="sortSLSVBTup()" style="padding-right: 12px;" class="fas fa-arrow-up"></i>
+                                <i (click)="sortSLSVBTdown()" class="fas fa-arrow-down"></i>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let i of this.arrDsLoMoTuChon; index as tt">
+                            <td>{{tt+1}}</td>
+                            <!-- <td>{{i.maLopMonHoc}}</td> -->
+                            <td class="tenHP" title="Click để xem chi tiết" (click)="ChiTietHP(i.maMonHoc)">{{i.tenMonHoc}}</td>
+                            <td>{{i.tenGiangVien}}</td>
+                            <td style="text-align: center;">{{i.soTinChi}}</td>
+                            <td>{{i.phongHoc}}</td>
+                            <td>{{i.thoiGian}}</td>
+                            <td>{{i.tuanHoc}}</td>
+                            <td style="text-align: center;">{{i.maxSV}}</td>
+                            <td style="text-align: center;">{{i.soLuongSVDangKi}}</td>
+                            <td title="Đăng kí học phần này" class="hovDK" (click)="DangKiTCBT('TCBoTro',i.maLopMonHoc,i.maMonHoc,i.soTinChi,i.soLuongSVDangKi)" style="font-size: 15px;text-align: center;color: #099f75;cursor:pointer"><i class="fas fa-pen"></i></td>
+                        </tr>
+                        <tr style="background-color:#B0E0E6;">
+                            <td *ngFor="let i of this.maxTCChuyenNganh" colspan="3">
+                                <b><i>Nhóm {{i.tenMonHoc}} </i> - Sinh viên chọn đủ <i style="color: red;">{{i.soTCTCMax}}/{{i.soTinChi}}</i> tín chỉ</b>
+                            </td>
+                            <td style="cursor: pointer;text-align: center;color: #03AE66;font-size: 15px;">
+                                <i (click)="sortTCCNup()" style="padding-right: 12px;" class="fas fa-arrow-up"></i>
+                                <i (click)="sortTCCNdown()" class="fas fa-arrow-down"></i>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="cursor: pointer;text-align: center;color: #03AE66;font-size: 15px;">
+                                <i (click)="sortSLSVCNup()" style="padding-right: 12px;" class="fas fa-arrow-up"></i>
+                                <i (click)="sortSLSVCNdown()" class="fas fa-arrow-down"></i>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let i of this.arrDsLopMoChuyenNganh; index as tt">
+                            <td>{{tt+1}}</td>
+                            <!-- <td>{{i.maLopMonHoc}}</td> -->
+                            <td class="tenHP" title="Click để xem chi tiết" (click)="ChiTietHP(i.maMonHoc)">{{i.tenMonHoc}}</td>
+                            <td>{{i.tenGiangVien}}</td>
+                            <td style="text-align: center;">{{i.soTinChi}}</td>
+                            <td>{{i.phongHoc}}</td>
+                            <td>{{i.thoiGian}}</td>
+                            <td>{{i.tuanHoc}}</td>
+                            <td style="text-align: center;">{{i.maxSV}}</td>
+                            <td style="text-align: center;">{{i.soLuongSVDangKi}}</td>
+                            <td title="Đăng kí học phần này" class="hovDK" (click)="DangKiTCBT('TCChuyenNganh',i.maLopMonHoc,i.maMonHoc,i.soTinChi,i.soLuongSVDangKi)" style="font-size: 15px;text-align: center;color: #099f75;cursor:pointer"><i class="fas fa-pen"></i></td>
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+<div style="display: none;padding:0 20px 0 20px;" id="ct-dslmddk">
+    <h4>Danh sách lớp đã đăng kí</h4>
+
+    <ng-container *ngIf="this.danh_sach_hp_da_dang_ki==0; else elseTemplate">
+        <i style="color: red;">Bạn chưa đăng kí học phần nào</i>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <div (click)="TaiXuong()" style="cursor: pointer;float: right;margin-bottom: 5px;margin-right: 20px;">
+            <i style="font-size: 20px; color: #099f75; margin-right: 3px;" class="fas fa-arrow-down"></i> <i style="font-size: 25px; color: #099f75;" class="fas fa-file-excel"></i>
+        </div>
+        <table>
+
+            <tr>
+                <th>STT</th>
+                <th>Học phần</th>
+                <th>Nhóm HP</th>
+                <th>Tổng số TC</th>
+                <th>Giảng viên</th>
+                <th>Thời gian</th>
+                <th>Phòng học</th>
+                <th>Tuần học</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let i of this.danh_sach_hp_da_dang_ki; index as tt">
+                <td>{{tt+1}}</td>
+                <td>{{i.tenMonHoc}}</td>
+                <td>{{this.convertNhomTC(i.nhomTuChon)}}</td>
+                <td style="text-align: center;">{{i.soTinChi}}</td>
+                <td>{{i.tenGiangVien}}</td>
+                <td style="text-align: center;">{{i.thoiGian}}</td>
+                <td style="text-align: center;">{{i.phongHoc}}</td>
+                <td style="text-align: center;">{{i.tuanHoc}}</td>
+                <td *ngIf="this.convertNhomTC(i.nhomTuChon)=='Bắt buộc'"></td>
+                <td *ngIf="this.convertNhomTC(i.nhomTuChon)!='Bắt buộc'" class="hovDK" (click)="XoaLopDK(i.maLopMonHoc)" title="Xóa học phần này!" style="cursor: pointer;text-align: center;"><i style="color: red;" class="fas fa-trash"></i></td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <b><i>Tổng số học phần đã đăng kí: </i>{{this.tong_so_hp_ddk}}</b>
+                </td>
+            </tr>
+        </table>
+    </ng-template>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <div class="m-alert alert-detail">
+        <div style="display: none;" id="l-alert" class="m-alert alert-detail">
+            <div class="m-alert alert-modal"></div>
+            <div class="alert-content" id="alert-content">
+                <div class="alert-header">
+                    <div class="alert-header-title">
+                        <span style="font-size: 31px;top: 6px;margin-right: 10px;color: #438eb9;" class="glyphicon glyphicon-volume-up"></span> <span>THÔNG BÁO</span>
+                    </div>
+
+                    <div id="alert-close" class="alert-header-close">
+                        <button (click)="closeAlert()" style="background-color: #FFFFFF;"></button>
+                    </div>
+                </div>
+                <div id="alert-body" class="alert-body">
+                    <!-- Bạn có chắc chắn muốn xóa những bản ghi đã chọn? -->
+                </div>
+                <div style="display: flex;" class="alert-footer">
+                    <button style="display: none;margin-right: 5px;" id="btnYes" class="m-btn-save">Đồng ý</button>
+                    <button (click)="closeAlert()" style="background: #ccc;color: black;" class="m-btn-close">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="m-dialog dialog-detail">
+        <div style="display: none;" id="dialog-add" class="m-dialog dialog-detail">
+            <div class="m-dialog dialog-modal"></div>
+            <div id="dc" class="dialog-content">
+                <div class="dialog-header">
+                    <div class="dialog-header-title">Chi tiết học phần</div>
+                    <div id="dialog-close" class="dialog-header-close">
+                        <button style="background-color: #ccc;" (click)="closeDialog()"></button>
+                    </div>
+                </div>
+                <div id="datachitiethp" style="padding-top: 15px;padding-left: 100px;" class="dialog-body">
+
+
+                </div>
+
+                <div style="position: absolute; bottom: 25px;right: 70px;" class="dialog-footer">
+                    <button style="border-radius: 5px;outline: none;" id="btnClose" (click)="closeDialog()" class="btn btn-success">Đóng</button>
+                </div>
+                <div style="position: absolute; bottom: 25px;left: 70px;" class="dialog-footer">
+                    <span><i>Tải giáo trình <a target="blank" href='https://www.google.com'>tại đây</a></i></span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hovDK:hover {
+        background-color: #ccc;
+    }
+    
+    .m-dialog {
+        position: static;
+    }
+    
+    .m-dialog .dialog-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        z-index: 999;
+        opacity: .5;
+    }
+    
+    .m-dialog .dialog-content {
+        position: absolute;
+        width: 910px;
+        height: 500px;
+        background-color: #F5F5F5;
+        z-index: 1000;
+        /* top: calc(50% - 139px);
+    left: calc(50% - 534px); */
+        padding: 24px;
+        border-radius: 5px;
+        position: fixed;
+        /* top: 5px; */
+        /* width: 100px; */
+        overflow: auto;
+        /* height: 100%; */
+    }
+    
+    .l-margin-bottom {
+        line-height: 30px;
+    }
+    
+    .l-mg-left {
+        margin-left: 30px;
+    }
+    
+    .m-dialog .dialog-content .dialog-header-close button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 0 5px 0 0;
+        background-image: url(../../../../assets/sv/imgs/ic_close_16.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        opacity: .7;
+    }
+    
+    .dialog-header-close button:hover {
+        background-color: transparent;
+    }
+    /* dialog header ************************************************************/
+    
+    .dialog-header-close button:hover {
+        background-color: transparent;
+    }
+    
+    .dialog-header-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .m-dialog .dialog-content .dialog-header {
+        display: flex;
+    }
+    
+    .m-dialog .dialog-content .dialog-header-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    .m-dialog .dialog-content .dialog-header-close:hover {
+        border-radius: 5px;
+    }
+</style>
+
+
+<style>
+    .tenHP {
+        cursor: pointer;
+    }
+    
+    .tenHP:hover {
+        background-color: #ccc;
+    }
+    
+    button {
+        height: 32px;
+        padding: 0 12px 0 12px;
+        color: #FFFFFF;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        background-color: #03AE66;
+    }
+    
+    .m-alert {
+        position: static;
+    }
+    
+    .m-alert .alert-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        z-index: 999;
+        opacity: .5;
+    }
+    
+    .m-alert .alert-content {
+        position: absolute;
+        width: 325px;
+        height: auto;
+        background-color: #ffffff;
+        z-index: 1000;
+        top: calc(50% - 370px);
+        left: calc(50% - 400px);
+        padding: 24px;
+        border-radius: 5px;
+    }
+    /* alert header ************************************************************/
+    
+    .m-alert .alert-content .alert-header-close button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 0 5px 0 0;
+        /* // background-image: url(../../asset/imgs/ic_close_16.png); */
+        background-image: url(../../../../assets/sv/imgs/ic_close_16.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        opacity: .7;
+    }
+    
+    .alert-header-close button:hover {
+        background-color: transparent;
+    }
+    
+    .alert-header-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .m-alert .alert-content .alert-header {
+        display: flex;
+    }
+    
+    .m-alert .alert-content .alert-header-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    .m-alert .alert-content .alert-header-close:hover {
+        border-radius: 5px;
+    }
+    /* end alert header ************************************************************/
+    /* alert body *************************************************************/
+    
+    .alert-body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    /* end alert body *************************************************************/
+    /* alert footer *************************************************************/
+    
+    .alert-footer {
+        float: right;
+    }
+    
+    .alert-footer .m-btn-close {
+        margin-right: 8px;
+    }
+    
+    .m-btn-saveAdd {
+        margin: 0 8px 0 8px;
+    }
+    /* end alert footer *************************************************************/
+</style>
+
+<style>
+     ::-webkit-scrollbar {
+        height: 5px;
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background-color: #0bcc6c;
+        border-radius: 5px;
+        width: 4px;
+    }
+    
+    .tableFixHead {
+        overflow: auto;
+        height: 500px;
+        /* border-top: 1px solid black; */
+    }
+    
+    .tableFixHead thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        border: 1px solid black;
+    }
+    
+    .tableFixHead thead tr {
+        border: 1px solid black;
+    }
+    /* Just common table stuff. Really. */
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid black;
+    }
+    
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px 16px;
+    }
+    
+    th {
+        background: #eee;
+    }
+</style>

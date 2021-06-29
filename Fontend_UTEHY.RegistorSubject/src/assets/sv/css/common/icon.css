@@ -1,0 +1,315 @@
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url(../../icons/ic_KhoanThu_56.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon-category {
+    width: 24px;
+    height: 22px;
+    /* background-image: url(../../icons/ic-menu.svg); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-content .nav-dashboad {
+    background-image: url(../../icons/ic_TongQuan_32.svg);
+}
+
+.navbar-content .nav-plan {
+    background-image: url(../../icons/ic_LapKeHoachThu_32.svg);
+}
+
+.navbar-content .nav-revenue {
+    background-image: url(../../icons/ic_QuanLyThu_32.svg);
+}
+
+.navbar-content .nav-bill {
+    background-image: url(../../icons/ic_HoaDon_32.svg);
+}
+
+.navbar-content .nav-num-revenue {
+    background-image: url(../../icons/ic_SoThu_32.svg);
+}
+
+.navbar-content .nav-repost {
+    background-image: url(../../icons/ic_BaoCao_32.svg);
+}
+
+.navbar-content .nav-message {
+    background-image: url(../../icons/ic_TinNhan_32.svg);
+}
+
+.navbar-content .nav-system {
+    background-image: url(../../icons/ic_HeThong_32.svg);
+}
+
+
+/* icon header */
+
+.icon-question {
+    margin-left: 6px;
+    width: 18px;
+    height: 20px;
+    align-self: center;
+    margin-right: 2px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Info_20.svg)
+}
+
+.icon-home {
+    width: 40px;
+    height: 32px;
+    align-self: center;
+    /* margin-right: 2px; */
+    background-size: contain;
+    background-position: unset;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/home.svg);
+}
+
+.icon-search {
+    margin-left: 16px;
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/search.svg);
+    border-left: 1px solid #ccc;
+    padding-left: 18px;
+}
+
+.account {
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imgs/Avatar.png);
+}
+
+.icon-finter {
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Filter.svg);
+}
+
+.icon-check-tb {
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imgs/ic_Check.png);
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Checkbox_Inactive.svg);
+}
+
+.btn-edit {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Edit.svg);
+}
+
+.btn-duplicate {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Duplicate_24.svg);
+}
+
+.btn-remove {
+    width: 24px;
+    height: 24px;
+    background-size: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Delete_32.svg);
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url(../../icons/ic_KhoanThu_56.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon-category {
+    width: 24px;
+    height: 22px;
+    /* background-image: url(../../icons/ic-menu.svg); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-content .nav-dashboad {
+    background-image: url(../../icons/ic_TongQuan_32.svg);
+}
+
+.navbar-content .nav-plan {
+    background-image: url(../../icons/ic_LapKeHoachThu_32.svg);
+}
+
+.navbar-content .nav-revenue {
+    background-image: url(../../icons/ic_QuanLyThu_32.svg);
+}
+
+.navbar-content .nav-bill {
+    background-image: url(../../icons/ic_HoaDon_32.svg);
+}
+
+.navbar-content .nav-num-revenue {
+    background-image: url(../../icons/ic_SoThu_32.svg);
+}
+
+.navbar-content .nav-repost {
+    background-image: url(../../icons/ic_BaoCao_32.svg);
+}
+
+.navbar-content .nav-message {
+    background-image: url(../../icons/ic_TinNhan_32.svg);
+}
+
+.navbar-content .nav-system {
+    background-image: url(../../icons/ic_HeThong_32.svg);
+}
+
+
+/* icon header */
+
+.icon-question {
+    margin-left: 6px;
+    width: 18px;
+    height: 20px;
+    align-self: center;
+    margin-right: 2px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Info_20.svg)
+}
+
+.icon-home {
+    width: 40px;
+    height: 32px;
+    align-self: center;
+    /* margin-right: 2px; */
+    background-size: contain;
+    background-position: unset;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/home.svg);
+}
+
+.icon-search {
+    margin-left: 16px;
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/search.svg);
+    border-left: 1px solid #ccc;
+    padding-left: 18px;
+}
+
+.account {
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imgs/Avatar.png);
+}
+
+.icon-finter {
+    width: 35px;
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Filter.svg);
+}
+
+.icon-check-tb {
+    height: 30px;
+    align-self: center;
+    margin-right: 0px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../imgs/ic_Check.png);
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Checkbox_Inactive.svg);
+}
+
+.btn-edit {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Edit.svg);
+}
+
+.btn-duplicate {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Duplicate_24.svg);
+}
+
+.btn-remove {
+    width: 24px;
+    height: 24px;
+    background-size: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Delete_32.svg);
+}

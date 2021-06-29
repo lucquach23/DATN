@@ -1,0 +1,98 @@
+.m-alert {
+    position: static;
+}
+
+.m-alert .alert-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999;
+    opacity: .5;
+}
+
+.m-alert .alert-content {
+    position: absolute;
+    width: 325px;
+    height: auto;
+    background-color: #ffffff;
+    z-index: 1000;
+    top: calc(50% - 370px);
+    left: calc(50% - 400px);
+    padding: 24px;
+    border-radius: 5px;
+}
+
+
+/* alert header ************************************************************/
+
+.m-alert .alert-content .alert-header-close button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 5px 0 0;
+    background-image: url(../../imgs/ic_close_16.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    opacity: .7;
+}
+
+.alert-header-close button:hover {
+    background-color: transparent;
+}
+
+.alert-header-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.m-alert .alert-content .alert-header {
+    display: flex;
+}
+
+.m-alert .alert-content .alert-header-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.m-alert .alert-content .alert-header-close:hover {
+    border-radius: 5px;
+}
+
+
+/* end alert header ************************************************************/
+
+
+/* alert body *************************************************************/
+
+.alert-body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+/* end alert body *************************************************************/
+
+
+/* alert footer *************************************************************/
+
+.alert-footer {
+    float: right;
+}
+
+.alert-footer .m-btn-close {
+    margin-right: 8px;
+}
+
+.m-btn-saveAdd {
+    margin: 0 8px 0 8px;
+}
+
+
+/* end alert footer *************************************************************/

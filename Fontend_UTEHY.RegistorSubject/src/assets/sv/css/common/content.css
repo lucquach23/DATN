@@ -1,0 +1,86 @@
+.content {
+    position: absolute;
+    top: 61px;
+    left: 221px;
+    width: calc(100% - 221px);
+    background-color: #FFFFFF;
+    /* padding: 16px; */
+    /* background-color: #F5F6FA; */
+}
+
+
+/* .content-top */
+
+.content .content-top {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: #66CDAA;
+    border-top: 1px solid #B1B1B1;
+}
+
+.content .content-top .content-top-item {
+    padding: 0 30px 0 30px;
+    height: 40px;
+    line-height: 40px;
+    align-items: center;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.content-top-item-tetx {
+    margin-top: 10px;
+}
+
+.content-top-item-active {
+    border-top: 2px solid #0DD469;
+    background-color: white;
+    color: #0DD469;
+    opacity: 1!important;
+}
+
+
+/* end .content-top */
+
+
+/* content-feature */
+
+.content-feature {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.content-feature-left {
+    display: flex;
+    align-items: center;
+    padding: 15px 0 15px 10px;
+    cursor: pointer;
+}
+
+.content-feature-left-checkbox {
+    background-image: url(../../icons/ic_Checkbox_Inactive.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    margin-right: 3px;
+}
+
+.content-feature-right {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+
+/* end content-feature */
+
+
+/* content grid */
+
+
+/* end conten grid */

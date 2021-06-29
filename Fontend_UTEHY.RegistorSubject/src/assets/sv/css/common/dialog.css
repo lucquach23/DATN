@@ -1,0 +1,379 @@
+.m-dialog {
+    position: static;
+}
+
+.m-dialog .dialog-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 999;
+    opacity: .5;
+}
+
+.m-dialog .dialog-content {
+    position: absolute;
+    width: 910px;
+    height: auto;
+    background-color: #F5F5F5;
+    z-index: 1000;
+    top: calc(50% - 370px);
+    left: calc(50% - 400px);
+    padding: 24px;
+    border-radius: 5px;
+}
+
+
+/* dialog header ************************************************************/
+
+.m-dialog .dialog-content .dialog-header-close button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 5px 0 0;
+    background-image: url(../../imgs/ic_close_16.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    opacity: .7;
+}
+
+.dialog-header-close button:hover {
+    background-color: transparent;
+}
+
+.dialog-header-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.m-dialog .dialog-content .dialog-header {
+    display: flex;
+}
+
+.m-dialog .dialog-content .dialog-header-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.m-dialog .dialog-content .dialog-header-close:hover {
+    border-radius: 5px;
+}
+
+
+/* end dialog header ************************************************************/
+
+
+/* dialog body *************************************************************/
+
+.content-form {
+    width: 100%;
+    height: 400px;
+    padding-top: 18px;
+    display: flex;
+}
+
+
+/* right */
+
+.content-right-input {
+    width: 48%;
+    float: right;
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+.title-check {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 40%;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.title-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    background: #fff;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.title-check:hover input~.checkmart {
+    background-color: #ccc;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.title-check input:checked~.checkmart {
+    background-color: #03C573;
+}
+
+
+/* Create the checkmart/indicator (hidden when not checked) */
+
+.checkmart:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmart when checked */
+
+.title-check input:checked~.checkmart:after {
+    display: block;
+}
+
+
+/* Style the checkmart/indicator */
+
+.title-check .checkmart:after {
+    left: 8px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 11px;
+    cursor: pointer;
+    margin-right: 30px;
+    font-size: 22px;
+    user-select: none;
+    font-size: 14px;
+    font-family: 'OpenSans-Regular';
+}
+
+.year-radio-txt {
+    display: flex;
+    width: 100%;
+    margin-left: 6px;
+}
+
+
+/* Hide the browser's default radio button */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the radio button is checked, add a blue background */
+
+.container input:checked~.checkmark {
+    background-color: #FFFFFF;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.container .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #03C573;
+}
+
+.content-left-input {
+    width: 48%;
+    border-right: 1px solid #ccc;
+    float: left;
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+.form-group label.input-name {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+input.form-control {
+    width: 97%;
+    padding: 6px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+select.form-control {
+    width: 92%;
+    padding: 6px;
+    border: none;
+    border-right: 1px solid #ccc;
+}
+
+select.form-control-conmon {
+    width: 100%;
+    padding: 6px;
+    height: 32px;
+}
+
+.option-check {
+    margin-top: 12px;
+}
+
+.btn-sum {
+    padding: 6px;
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Plus.svg)
+}
+
+.group-form {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group label.input-salary {
+    width: 70%;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.form-group label.select-salary {
+    width: 60%;
+    display: inline-block;
+}
+
+.form-salary {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+input.form-control-a {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 80%;
+    height: 18px;
+}
+
+.select-year {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    height: 32px;
+}
+
+.divi-regis {
+    background-image: url(../../icons/ic_Switch_Inactive.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    align-self: center;
+}
+
+.title-check-regis {
+    position: relative;
+    padding-left: 0px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 40%;
+    user-select: none;
+}
+
+
+/* end dialog body *************************************************************/
+
+
+/* dialog footer *************************************************************/
+
+.dialog-footer {
+    float: right;
+}
+
+.m-btn-saveAdd {
+    margin: 0 8px 0 8px;
+}
+
+
+/* end dialog footer *************************************************************/

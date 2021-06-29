@@ -1,0 +1,47 @@
+<div style="background-color: #0bcc6c" class="content-top">
+    <div id="ctdt" class="content-top-item content-top-item-active">
+        Bảng điểm
+    </div>
+</div>
+<div id="content-khungctdt">
+    <div class="container">
+        <div style="text-align: center;">
+            <h3><b>BẢNG ĐIỂM</b></h3>
+        </div>
+        <div class="container" style="width: 732px;">
+            <div (click)="TaiXuong()" style="cursor: pointer;float: right;margin-bottom: 5px;margin-right: 20px;">
+                <i style="font-size: 20px; color: #099f75; margin-right: 3px;" class="fas fa-arrow-down"></i> <i style="font-size: 25px; color: #099f75;" class="fas fa-file-excel"></i>
+            </div>
+            <table class="l-border" id="datakhung" style="width: 100%; border-collapse: collapse;">
+                <colgroup class="l-border">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 45%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 15%;">
+                </colgroup>
+                <tbody class="l-border">
+                    <tr style="height: 36px;background-color: #90EE90;">
+                        <td class="l-center l-border"><b>STT</b></td>
+                        <td class="hov" title="Nhấn đúp để xem chi tiết" style="padding-left: 10px;" class="l-border"><b>Học phần</b></td>
+                        <td class="l-center l-border"><b>Số tín chỉ</b></td>
+                        <td class="l-center l-border"><b>Điểm</b></td>
+                        <td class="l-center l-border"><b>Điểm chữ</b></td>
+                    </tr>
+                    <tr style="height: 30px;" *ngFor="let i of this.bd; index as tt" class="l-center">
+                        <td class="l-border">{{tt+1}}</td>
+                        <td class="l-border" style="text-align: left; padding-left:5px">{{i.tenMonHoc}}</td>
+                        <td class="l-border">{{i.soTinChi}}</td>
+                        <td class="l-border">{{i.diemTongKet}}</td>
+                        <td class="l-border">{{this.ConvertScore(i.diemTongKet)}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">Tổng số TC : <b>{{this.tstc}}</b></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

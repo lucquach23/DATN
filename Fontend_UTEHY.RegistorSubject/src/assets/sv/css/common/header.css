@@ -1,0 +1,108 @@
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 221px);
+    height: 60px;
+    border-bottom: 1px solid transparent;
+    align-items: center;
+    line-height: 60px;
+}
+
+
+/* header left */
+
+.header .header-left .header-left-text {
+    font-weight: bold;
+}
+
+.header .header-left {
+    display: flex;
+    margin-left: 16px;
+}
+
+.header .header-left .question-mark {
+    background-image: url(../../icons/help.svg);
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+}
+
+
+/* end header left */
+
+
+/* header-right */
+
+.header .header-right {
+    float: right;
+    position: absolute;
+    right: 0px;
+    display: flex;
+}
+
+.point-pick {
+    height: 32px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    align-self: center;
+    align-items: center;
+    line-height: 32px;
+    display: flex;
+    padding-right: 15px;
+}
+
+.point-pick-icon {
+    background-image: url(../../icons/home.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    align-self: center;
+    padding-right: 5px;
+}
+
+.select-year-header select {
+    height: 32px;
+    background-color: #F5F6FA;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.m-icon-search {
+    align-self: center;
+    align-items: center;
+    line-height: 32px;
+    margin-right: 5px;
+}
+
+.header-right .icon-search {
+    background-image: url(../../icons/search.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    margin-left: 20px;
+    /* border-left: 1px solid #CCCCCC; */
+}
+
+.header .account {
+    background-image: url(../../imgs/Avatar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    align-self: center;
+    align-items: center;
+    line-height: 32px;
+    margin: 0 10px 0 10px;
+}
+
+
+/* end header-right */

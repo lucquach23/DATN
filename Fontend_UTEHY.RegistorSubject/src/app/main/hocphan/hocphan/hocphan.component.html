@@ -1,0 +1,193 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Trang chủ</a>
+        </li>
+        <li class="active">Lớp chuyên ngành</li>
+    </ul>
+</div>
+<div class="row">
+    <div style="padding: 20px;" class="col-xs-12">
+        <div style="display: flex;margin-bottom:12px" class="col-xs-12">
+            <div>
+                <input list="dslop" (keyup.enter)="TimKiemLop()" id="ipSearch" type="text" class="form-control" placeholder="Nhập mã lớp">
+                <datalist id="dslop">
+                    <option value="101171"></option>
+                    <option value="101172"></option>
+                    <option value="101173"></option>
+                    <option value="101174"></option>
+                    <option value="101175"></option>
+                    <option value="101176"></option>
+                    <option value="101177"></option>
+                    <option value="101181"></option>
+                    <option value="101182"></option>
+                    <option value="101183"></option>
+                    <option value="101184"></option>
+                    <option value="101185"></option>
+                    <option value="101186"></option>
+                    <option value="101187"></option>
+                    <option value="101191"></option>
+                    <option value="101192"></option>
+                    <option value="101193"></option>
+                    <option value="101194"></option>
+                    <option value="101195"></option>
+                    <option value="101196"></option>
+                    <option value="101197"></option>
+                    <option value="101201"></option>
+                    <option value="101202"></option>
+                    <option value="101203"></option>
+                    <option value="101204"></option>
+                    <option value="101205"></option>
+                    <option value="101206"></option>
+                    <option value="101207"></option>
+                </datalist>
+            </div>
+            <div>
+                <input list="dski" (keyup.enter)="TimKiemLop()" id="ipKi" type="text" class="form-control" placeholder="Chọn kì">
+                <datalist id="dski">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    <option value="6"></option>
+                    <option value="7"></option>
+                    <option value="8"></option>
+                    
+                </datalist>
+            </div>
+            <div class="input-group-append">
+                <button (click)="TimKiemLop()" style="outline: none;padding: 2px 12px;height: 34px;" class="btn btn-success" type="submit">Tìm kiếm</button>
+            </div>
+            <div style="margin-left:50px">
+                <input (keyup.enter)="Showttsv('tong',$event.target.value)" id="ipMasv" type="text" class="form-control" placeholder="Nhập mã sinh viên">
+
+            </div>
+
+        </div>
+        <div *ngIf="show_datatheolop" id="datatheolop">
+            <div *ngIf="showrong">
+                <i><b style="color: red;">Thông tin tìm kiếm không được để trống!</b></i>
+            </div>
+            <div id="elShowDt" *ngIf="showtb">
+                <div *ngFor="let i of this.ttl">
+                    <b>Mã lớp chuyên ngành: </b> {{i.maLop}}<br>
+                    <b>Khóa: </b>{{i.namNhapHoc}}-{{i.namTotNghiep}}<br>
+                    <b>Giáo viên chủ nhiệm: </b> {{i.tenGiangVien}}<br>
+                    <b>Email: </b> {{i.email}}<br>
+                    <b>SĐT:</b> {{i.soDienThoai}}<br>
+                    <div style="position: relative;">
+                        <div style="position: absolute; right:0px;top: -50px;">
+                            <button (click)="TaiXuongDSSV()" class="btn btn-success">
+                                <span class="glyphicon glyphicon-download-alt"></span> Tải xuống
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table id="customers">
+                    <tr>
+                        <th>TT</th>
+                        <th>Mã SV</th>
+                        <th style="cursor: pointer;">Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Tổng môn ĐK</th>
+                        <th>SLHP Bắt buộc</th>
+                        <th>SLHP Bổ trợ</th>
+                        <th>SLHP Chuyên ngành</th>
+                        <th>SLHP Thể chất</th>
+                        <th>TSTC</th>
+                    </tr>
+                    <tr *ngFor="let i of this.ttdssv; index as tt">
+                        <td style="width: 2%;">{{tt+1}}</td>
+                        <td>{{i.maSinhVien}}</td>
+                        <td style="cursor: pointer;" (click)="Showttsv('1ki',i.maSinhVien)">{{i.tenSinhVien}}</td>
+                        <td>{{getFormattedDate(i.sinhNhat)}}</td>
+                        <td>{{i.tongSoMon}}</td>
+                        <td>{{i.soLuongMonBatBuoc}}</td>
+                        <td>{{i.soLuongMonTuChonBoTro}}</td>
+                        <td>{{i.soLuongMonTuChonChuyenNganh}}</td>
+                        <td>{{i.soLuongMonTuChonGDTC}}</td>
+                        <td>{{i.tstc}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div *ngIf="show_datatheomasv" id="datatheomasv">
+            <div *ngIf="showtbmsvtrong"><b><i style="color: red;">Mã muốn tìm không tồn tại!</i></b></div>
+            <div *ngIf="showdtcua1sv">
+                <div>
+                    <b>Mã sinh viên: </b> {{this.dshpsv[0]['maSinhVien']}}<br>
+                    <b>Mã lớp: </b>{{this.dshpsv[0]['maLop']}}<br>
+                    <b>Họ tên: </b> {{this.dshpsv[0]['tenSinhVien']}}<br>
+                    <b>Ngày sinh: </b> {{getFormattedDate(this.dshpsv[0]['sinhNhat'])}}<br>
+                    <div style="position: relative;">
+                        <div style="position: absolute; right:0px;top: -50px;">
+                            <button (click)="TaiXuongDSHPSV()" class="btn btn-success">
+                                <span class="glyphicon glyphicon-download-alt"></span> Tải xuống
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table id="customers">
+                    <tr>
+                        <th>Học kì</th>
+                        <th>Học phần</th>
+                        <th>Số TC</th>
+                        <th>Giảng viên</th>
+                        <th>Phòng học</th>
+                        <th>Thời gian</th>
+                        <th>Tuần</th>
+                        <th>Điểm TB</th>
+
+                    </tr>
+                    <tr *ngFor="let i of this.dshpsv">
+                        <td>{{i.hocKi}}</td>
+                        <td>{{i.tenMonHoc}}</td>
+                        <td>{{i.soTinChi}}</td>
+                        <td>{{i.tenGiangVien}}</td>
+                        <td>{{i.phongHoc}}</td>
+                        <td>{{i.thoiGian}}</td>
+                        <td>{{i.tuanHoc}}</td>
+                        <td>{{checkDiem(i.diemTongKet)}}</td>
+
+                    </tr>
+
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+    
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>

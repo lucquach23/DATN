@@ -1,0 +1,56 @@
+button {
+    height: 32px;
+    padding: 0 12px 0 12px;
+    color: #FFFFFF;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-addnew,
+.m-btn-saveAdd,
+.m-btn-save {
+    background-color: #03AE66;
+}
+
+.btn-sort {
+    background-color: #FFFFFF;
+    color: #3D3F4E;
+    border: 1px solid #B1B1B1;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-sort:hover {
+    background-color: #F8F8F8;
+}
+
+.feature-delete {
+    background-image: url(../../icons/ic_Delete_32.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #02BF70;
+}
+
+.m-btn-close {
+    color: #3D3F4E;
+    border: 1px solid #B1B1B1;
+}
+
+.m-btn-close:hover {
+    background-color: #F8F8F8;
+}
+
+.m-btn-saveAdd,
+.m-btn-save,
+.m-btn-close {
+    width: 100px;
+}

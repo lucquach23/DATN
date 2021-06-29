@@ -1,0 +1,69 @@
+.form-table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: calc(100vh - 170px);
+}
+
+.input-search {
+    display: flex;
+    width: auto;
+}
+
+.form-table table th {
+    align-items: center;
+}
+
+.tb-data {
+    width: calc(100% - 18px);
+    padding: 0px 9px;
+    height: 100%;
+}
+
+.border-mtb {}
+
+th.text-center,
+td.text-center {
+    width: 5%;
+    align-items: center;
+}
+
+
+
+.form-table table th {
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.form-table table th .input-search {
+    padding-top: 14px;
+}
+
+.form-table table th .input-search select {
+    border: 1px solid #B1B1B1;
+    padding-left: 28px;
+    width: 100%;
+    height: 32px;
+}
+
+.form-table table th .input-search input {
+    border: 1px solid #B1B1B1;
+    padding-left: 28px;
+    width: 100%;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/ic_Filter.svg);
+}
+
+
+
+.form-table table tr td {
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+
+.btn-function {
+    display: flex;
+}

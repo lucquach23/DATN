@@ -1,0 +1,26 @@
+@import url('./common/navbar.css');
+@import url('./common/header.css');
+@import url('./common/content.css');
+@import url('./common/pading.css');
+@import url('./common/button.css');
+@import url('./common/input.css');
+@import url('./common/select.css');
+@import url('./common/grid.css');
+@import url('./common/icon.css');
+@import url('./common/dialog.css');
+@import url('./common/alert.css');
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    margin: 0;
+    font-family: OpenSans-Regular;
+    font-size: 13px;
+}
+
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans-Regular.ttf') format('opentype');
+}

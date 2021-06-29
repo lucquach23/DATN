@@ -1,0 +1,318 @@
+.back-dialog {
+    background: black;
+    opacity: 0.4;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.revenue-dialog {
+    display: block;
+    width: 915px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border: 1px solid #D1F1FF;
+    background: white;
+    top: 20%;
+    z-index: 3;
+}
+
+.title-form {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+}
+
+.content-form {
+    width: 100%;
+    height: 400px;
+    padding-top: 18px;
+    display: flex;
+}
+
+.footer-form {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #BBBBBB;
+    background-color: white;
+}
+
+.title-form-revenue {
+    float: left;
+    margin-left: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-x {
+    float: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../content/img/ic_close_16.png)
+}
+
+.btn-footer-right {
+    float: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 37%;
+}
+
+.btn-footer-left {
+    float: left;
+    height: 100%;
+    width: 62%;
+    display: flex;
+    align-items: center;
+}
+
+
+/* right */
+
+.content-right-input {
+    width: 48%;
+    border-right: 1px solid #ccc;
+    float: right;
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+.title-check {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 40%;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.title-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    background: #fff;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.title-check:hover input~.checkmart {
+    background-color: #ccc;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.title-check input:checked~.checkmart {
+    background-color: #03C573;
+}
+
+
+/* Create the checkmart/indicator (hidden when not checked) */
+
+.checkmart:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmart when checked */
+
+.title-check input:checked~.checkmart:after {
+    display: block;
+}
+
+
+/* Style the checkmart/indicator */
+
+.title-check .checkmart:after {
+    left: 8px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 11px;
+    cursor: pointer;
+    margin-right: 30px;
+    font-size: 22px;
+    user-select: none;
+    font-size: 14px;
+    font-family: 'OpenSans-Regular';
+}
+
+.year-radio-txt {
+    display: flex;
+    width: 100%;
+    margin-left: 6px;
+}
+
+
+/* Hide the browser's default radio button */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the radio button is checked, add a blue background */
+
+.container input:checked~.checkmark {
+    background-color: #FFFFFF;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.container .checkmark:after {
+    top: 5px;
+    left: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #03C573;
+}
+
+.content-left-input {
+    width: 48%;
+    border-right: 1px solid #ccc;
+    float: left;
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+.form-group label.input-name {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.btn-sum {
+    float: right;
+    padding: 6px;
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/asset/icons/ic_Plus.svg)
+}
+
+.group-form {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group label.input-salary {
+    width: 70%;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.form-group label.select-salary {
+    width: 60%;
+    display: inline-block;
+}
+
+.form-salary {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.select-year {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+}

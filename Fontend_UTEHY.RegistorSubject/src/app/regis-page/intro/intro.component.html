@@ -1,0 +1,355 @@
+<div id="dialog-add" class="m-dialog dialog-detail">
+    <div class="m-dialog dialog-modal"></div>
+    <div id="ttsv" class="dialog-content">
+        <div class="dialog-header">
+            <div class="dialog-header-title">Thông tin sinh viên</div>
+
+        </div>
+        <div *ngFor="let i of this.sv" class="dialog-body">
+            <div class="m-row m-flex">
+                <div class="m-col el-avatar-customer m-flex-1">
+                    <div class="el-avatar"></div>
+                    <div style="text-align: center;" class="el-avatar-note text-align-center">
+                        Vui lòng chọn ảnh có định dạng <br><b>.jpg, .jpeg, .png, .gif. </b>
+                    </div>
+                </div>
+                <div class="m-col el-left  m-flex-2">
+                    <div class="m-row mg-top-0 m-flex">
+                        <div class="m-col m-flex-1">
+                            <div class="m-label"><b>Khoa</b></div>
+                            <div class="m-control">
+                                <input value="Công nghệ thông tin" disabled id="ipKhoa" class="input-required border-red" type="text">
+                            </div>
+                        </div>
+                        <div class="m-flex-1 mg-left-10px">
+                            <div class="m-label"><b>Ngành</b></div>
+                            <div class="m-control">
+                                <input value="{{i.tenNganhDaoTao}}" disabled id="ipNganh" class="input-required border-red" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-row m-flex">
+                        <div class="m-col m-flex-1">
+                            <div class="m-label"><b>Lớp</b></div>
+                            <div class="m-control">
+                                <input value="{{i.maLop}}" disabled id="ipLop" class="input-required border-red" type="text">
+                            </div>
+                        </div>
+                        <div class="m-flex-1 mg-left-10px">
+                            <div class="m-label"><b>Họ tên</b></div>
+                            <div class="m-control">
+                                <input value="{{i.tenSinhVien}}" id="ipHoTen" class="input-required border-red" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-row m-flex">
+                        <div class="m-flex-1">
+                            <div class="m-label"><b>Ngày sinh</b></div>
+                            <div class="m-control">
+                                <input value="{{this.getFormattedDate(i.sinhNhat)}}" style="height: 34px;" id="ipNgaySinh" fieldname="DateOfBirth" type="date">
+                            </div>
+                        </div>
+                        <div class="m-flex-1 mg-left-10px">
+                            <div style="display: flex;">
+                                <div>
+                                    <div class="m-label"><b>Giới tính</b></div>
+                                    <div class="m-radio-group" id="rdGender">
+                                        <div class="m-radio-item">
+                                            <input style="margin: 0;" type="radio" id="rdMale" fieldname="Gender" value="" name="gender" checked="">
+                                            <label style="margin: 0;" for="rdMale">Nam</label>
+                                        </div>
+                                        <div class="m-radio-item mg-left-10px">
+                                            <input style="margin: 0;" type="radio" id="rdFemale" fieldname="Gender" value="" name="gender">
+                                            <label style="margin: 0;" for="rdMale">Nữ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-left: 41px;">
+                                    <div class="m-label"><b>Khóa</b></div>
+                                    <div style="font-size: 13px;margin-top: 16px;">{{i.namNhapHoc}} - {{i.namTotNghiep}}</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-row m-flex">
+                <div class="m-flex-2">
+                    <div class="m-label"><b>Email</b></div>
+                    <div class="m-control"><input value="{{i.email}}" id="ipEmail" fieldname="Email" type="email" placeholder="example@domain.com" class="border-red" title="Email không đúng định dạng." validate="false"></div>
+                </div>
+                <div class="m-flex-1 mg-left-10px">
+                    <div class="m-label"><b>Số điện thoại</b></div>
+                    <div class="m-control"><input value="{{i.soDienThoai}}" id="ipSDT" fieldname="PhoneNumber" class="input-required border-red" type="tel" required="" title="Trường này không được phép để trống" validate="false"></div>
+                </div>
+            </div>
+            <div class="m-row m-flex">
+                <div class="m-flex-2">
+                    <div class="m-label"><b>Địa chỉ</b></div>
+                    <div class="m-control"><input value="{{i.queQuan}}" id="ipDiaChi" type="text" fieldname="CompanyName"></div>
+                </div>
+                <div class="m-flex-1 mg-left-10px">
+                    <div class="m-label"><b>STC tích lũy</b></div>
+                    <div class="m-control"><input type="text" disabled value="{{this.sumtc}}/{{i.tongSoTinChi}}"></div>
+                </div>
+            </div>
+            <div class="m-row m-flex">
+                <div class="m-flex-3">
+                    <div class="m-label"><b>Địa chỉ thường trú</b></div>
+                    <div class="m-control"><input value="{{i.queQuan}}" id="txtAddress" fieldname="Address" type="tel"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-footer">
+            <button (click)="CapNhatSv()" style="outline: none; border-radius: 4px;" id="btnSave" class="btn btn-primary"><i style="margin-right: 4px;" class="far fa-save"></i><span class="btn-text">Cập nhật</span></button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="m-alert alert-detail">
+        <div style="display: none;" id="l-alert" class="m-alert alert-detail">
+            <div class="m-alert alert-modal"></div>
+            <div class="alert-content" id="alert-content">
+                <div class="alert-header">
+                    <div class="alert-header-title">Thông báo</div>
+                    <div id="alert-close" class="alert-header-close">
+                        <button (click)="closeAlert()" style="background-color: #FFFFFF;"></button>
+                    </div>
+                </div>
+                <div id="alert-body" class="alert-body">
+
+                </div>
+                <div style="display: flex;" class="alert-footer">
+                    <button style="display: none;margin-right: 5px;" id="btnYes" class="m-btn-save">Đồng ý</button>
+                    <button (click)="closeAlert()" style="background: #ccc;color: black;" class="m-btn-close">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .m-alert {
+        position: static;
+    }
+    
+    .m-alert .alert-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        z-index: 999;
+        opacity: .5;
+    }
+    
+    .m-alert .alert-content {
+        position: absolute;
+        width: 325px;
+        height: auto;
+        background-color: #ffffff;
+        z-index: 1000;
+        top: calc(50% - 370px);
+        left: calc(50% - 400px);
+        padding: 24px;
+        border-radius: 5px;
+    }
+    /* alert header ************************************************************/
+    
+    .m-alert .alert-content .alert-header-close button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 0 5px 0 0;
+        /* // background-image: url(../../asset/imgs/ic_close_16.png); */
+        background-image: url(../../../../assets/sv/imgs/ic_close_16.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        opacity: .7;
+    }
+    
+    .alert-header-close button:hover {
+        background-color: transparent;
+    }
+    
+    .alert-header-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .m-alert .alert-content .alert-header {
+        display: flex;
+    }
+    
+    .m-alert .alert-content .alert-header-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    .m-alert .alert-content .alert-header-close:hover {
+        border-radius: 5px;
+    }
+    /* end alert header ************************************************************/
+    /* alert body *************************************************************/
+    
+    .alert-body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    /* end alert body *************************************************************/
+    /* alert footer *************************************************************/
+    
+    .alert-footer {
+        float: right;
+    }
+    
+    .alert-footer .m-btn-close {
+        margin-right: 8px;
+    }
+    
+    .m-btn-saveAdd {
+        margin: 0 8px 0 8px;
+    }
+    
+    button {
+        height: 32px;
+        padding: 0 12px 0 12px;
+        color: #FFFFFF;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        background-color: #03AE66;
+    }
+</style>
+
+<style>
+    .m-dialog .dialog-content {
+        position: absolute;
+        width: 900px;
+        margin-left: 50px;
+        height: auto;
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: 5px;
+    }
+    
+    .m-dialog .dialog-content .dialog-header {
+        display: flex;
+    }
+    /* Tiêu đề của dialog title */
+    
+    .m-dialog .dialog-header .dialog-header-title {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+    .m-flex {
+        display: flex;
+    }
+    
+    .m-row {
+        margin-top: 16px;
+    }
+    
+    .el-avatar-customer .el-avatar {
+        border: 1px solid #ccc;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        border-radius: 50%;
+        cursor: pointer;
+        background-image: url(../../../../assets/sv/imgs/luc.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .mg-top-0 {
+        margin-top: 0px;
+    }
+    
+    .m-flex-1 {
+        flex: 1;
+    }
+    /* input.border-red {
+    border: 1px solid #FF4747;
+} */
+    
+    .m-label {
+        margin-bottom: 4px;
+    }
+    
+    .mg-left-10px {
+        margin-left: 10px;
+    }
+    
+    .m-radio-group {
+        display: flex;
+        height: 40px;
+    }
+    
+    input[type='radio']:after {
+        width: 18px;
+        height: 18px;
+        border-radius: 18px;
+        position: relative;
+        /* background-color: white; */
+        background-size: contain;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        /* border: 1px solid #BBBBBB; */
+    }
+    
+    .m-radio-group .m-radio-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    .m-flex-2 {
+        flex: 2;
+    }
+    
+    .m-flex-3 {
+        flex: 3;
+    }
+    
+    .dialog-footer {
+        display: flex;
+        width: 100%;
+        height: 60px;
+        border-radius: 0 0 5px 5px;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 12px 24px;
+        box-sizing: border-box;
+    }
+    
+    .dialog-footer button {
+        margin-left: 16px;
+    }
+    
+    .m-btn-cancel {
+        color: #000000;
+        background-color: transparent;
+    }
+    
+    .m-btn-cancel:hover,
+    .m-btn-cancel:focus {
+        background-color: #BBBBBB;
+    }
+    
+    .m-btn .btn-text {
+        margin-left: 8px;
+    }
+</style>

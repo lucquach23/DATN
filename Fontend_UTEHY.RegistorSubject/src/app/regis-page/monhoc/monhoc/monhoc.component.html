@@ -1,0 +1,149 @@
+<div style="background-color: #0bcc6c" class="content-top">
+    <div id="ctdt" class="content-top-item content-top-item-active">
+        Tìm kiếm môn học
+    </div>
+</div>
+<div class="container" style="padding:0 20px 0 20px;" id="ct-dslm">
+    <div style="padding: 15px;padding-top: 0px;" class="noidungdslm">
+        <h4>THÔNG TIN HỌC PHẦN</h4>
+        <div class="tableFixHead">
+            <!-- <table>
+                <thead>
+                    <tr style="text-align: center;">
+                        <th style="width: 3%;">TT</th>
+                        <th style="width: 10%;">Mã học phần</th>
+
+                        <th style="width: 35%;padding: 12px">
+                            <span>Tên học phần</span>
+                            <div><input id="ipTenHP" (keyup.enter)="searchName($event.target.value)" type="text"></div>
+                        </th>
+                        <th style="padding: 12px">
+                            <span>Nhóm HP</span>
+                            <div>
+                                <select style="width: 100%;">
+                                    <option value="">------Nhóm HP------</option>
+                                    <option value="">Bổ Trợ</option>
+                                    <option value="">Công nghệ phần mềm</option>
+                                    <option value="">Mạng máy tính & TT</option>
+                                    <option value="">Hệ thống thông tin</option>
+                                    <option value="">Khoa học máy tính</option>
+                                </select>
+                            </div>
+                        </th>
+                        <th style="width: 7%;">Tổng STC</th>
+                        <th style="width: 7%;padding: 1px;">STC lí thuyết</th>
+                        <th style="width: 7%;">STC thực hành</th>
+
+                        <th style="width: 1%;">Link download</th>
+                    </tr>
+                </thead>
+                <tbody id="data-tbody-dshp">
+
+                    <tr style="height: 40px;" *ngFor="let i of this.dshp;index as tt">
+                        <th>{{ tt+1 }}</th>
+                        <th>{{ i.maMonHoc }}</th>
+                        <th>{{ i.tenMonHoc }}</th>
+                        <th>{{ i.nhomTuChon }}</th>
+                        <th>{{ i.soTinChi }}</th>
+                        <th>{{ i.soTinChiLiThuyet }}</th>
+                        <th>{{ i.soTinChiThucHanh }}</th>
+                        <th><a href="{{ i.link }}" target="blank">link</a></th>
+                    </tr>
+
+                </tbody>
+            </table> -->
+            <div class="fixTableHead">
+                <table>
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th style="width: 3%;">TT</th>
+                            <th style="width: 8%;">Mã học phần</th>
+                            <th style="width: 8%;">Mã HP tiên quyết</th>
+                            <th style="text-align: center;width: 29%;padding: 12px">
+                                <span>Tên học phần</span>
+                                <div><input id="ipTenHP" (keyup.enter)="searchName($event.target.value)" type="text"></div>
+                            </th>
+                            <th style="padding: 12px;text-align: center;width: 20%;">
+                                <span>Nhóm HP</span>
+                                <div>
+                                    <select (change)="selectOption($event.target.value)" style="width: 100%;">
+                                        <option value="null"></option>
+                                        <option value="TCBoTro">Bổ Trợ</option>
+                                        <option value="TCGDTC">Giáo dục thể chất</option>
+                                        <option value="TCCNPM">Công nghệ phần mềm</option>
+                                        <option value="TCMMTvTT">Mạng máy tính & TT</option>
+                                        <option value="TCHTTT">Hệ thống thông tin</option>
+                                        <option value="TCKHMTvDV">Khoa học máy tính & DV</option>
+                                    </select>
+                                </div>
+                            </th>
+                            <th style="width: 7%;">Tổng STC</th>
+                            <th style="width: 7%;padding: 1px;text-align: center;">STC lí thuyết</th>
+                            <th style="width: 8%;">STC thực hành</th>
+
+                            <th style="width: 1%;">Link</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let i of this.dshp;index as tt">
+                            <td>{{tt+1}}</td>
+                            <td>{{i.maMonHoc }}</td>
+                            <td>{{i.maMonHocTienQuyet}}</td>
+                            <td>{{i.tenMonHoc }}</td>
+                            <td>{{this.convertNhomTC(i.nhomTuChon) }}</td>
+                            <td>{{i.soTinChi}}</td>
+                            <td>{{i.soTinChiLiThuyet }}</td>
+                            <td>{{i.soTinChiThucHanh }}</td>
+                            <td><a href="{{i.link}}"><i class="fas fa-save"></i></a></td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div id="tongsobanghi"></div>
+        </div>
+    </div>
+</div>
+<style>
+     ::-webkit-scrollbar {
+        height: 5px;
+        width: 8px;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background-color: #0bcc6c;
+        border-radius: 5px;
+        width: 4px;
+    }
+    
+    .fixTableHead {
+        overflow-y: auto;
+        height: 451px;
+        /* // border-top: 1px solid #529432; */
+    }
+    
+    .fixTableHead thead th {
+        position: sticky;
+        top: 0;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th,
+    td {
+        padding: 8px 15px;
+        border: 2px solid #529432;
+    }
+    
+    th {
+        background: #ABDD93;
+    }
+</style>

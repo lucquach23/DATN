@@ -1,0 +1,72 @@
+.content-top {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: #CCCCCC;
+    border-top: 1px solid #B1B1B1;
+    margin-bottom: 20px;
+}
+
+.content-top .content-top-item {
+    padding: 0 30px 0 30px;
+    height: 40px;
+    line-height: 40px;
+    align-items: center;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.content-top-item-active {
+    border-top: 2px solid #0DD469;
+    background-color: white;
+    color: #0DD469;
+    opacity: 1!important;
+}
+
+
+/* 
+.noidungdslm table,
+td,
+th {
+    border: 1px solid black;
+}
+
+
+/* .noidungdslm table {
+    width: 100%;
+    border-collapse: collapse;
+} 
+
+.noidungdslm table {
+    text-align: left;
+    position: relative;
+    border-collapse: collapse;
+}
+
+.noidungdslm th,
+td {
+    padding: 0.25rem;
+}
+
+.noidungdslm tr.red th {
+    background: red;
+    color: white;
+}
+
+.noidungdslm tr.green th {
+    background: green;
+    color: white;
+}
+
+.noidungdslm tr.purple th {
+    background: purple;
+    color: white;
+}
+
+.noidungdslm th {
+    background: white;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+*/

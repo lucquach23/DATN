@@ -1,0 +1,115 @@
+<div style="background-color: #0bcc6c" class="content-top">
+
+    <div id="ctdt" (click)="showctdt()" class="content-top-item content-top-item-active">
+        Chương trình đào tạo
+    </div>
+    <div id="khungctdt" (click)="showkhung()" class="content-top-item">
+        Khung chương trương trình đào tạo theo kì
+    </div>
+
+</div>
+<div id="content-ctdt">
+    <div class="container">
+        <table style="width: 1000px;margin-left: 60px;" class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="text-align: center;" colspan="4" scope="col">CHƯƠNG TRÌNH ĐÀO TẠO</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of this.ctdt">
+                <tr>
+                    <th>Mã sinh viên</th>
+                    <td>{{item.maSinhVien}}</td>
+                    <td><b>Mã CTĐT</b></td>
+                    <td>{{item.maChuongTrinhDaoTao}}</td>
+                </tr>
+                <tr>
+                    <th>Họ tên</th>
+                    <td>{{item.tenSinhVien}}</td>
+                    <td><b>Chương trình</b></td>
+                    <td>{{item.tenChuongTrinhDaoTao}}</td>
+                </tr>
+                <tr>
+                    <th>Ngày sinh</th>
+                    <td>{{getFormattedDate(item.sinhNhat)}}</td>
+                    <td><b>Tổng số tín chỉ</b></td>
+                    <td>{{this.sumtc}}/150</td>
+                </tr>
+                <tr>
+                    <th>Lớp</th>
+                    <td>{{item.maLop}}</td>
+                    <td><b>Hệ đào tạo</b></td>
+                    <td>Đại Học Chính Quy</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <i>Chi tiết Chương trình đào tạo xem <a target="_blank" href="https://drive.google.com/file/d/1OaqRcBr-IMlWF0OqPfNH_mxhf7VQSq38/view?usp=sharing">tại đây</a></i>
+                    </td>
+                    <!-- <button (dbclick)="showDialog()">click</button> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<div id="content-khungctdt" style="display: none;">
+    <div class="container">
+        <div style="text-align: center;">
+            <h3><b>KHUNG CHƯƠNG TRÌNH ĐÀO TẠO THEO KÌ</b></h3>
+        </div>
+        <div class="container" style="width: 732px;">
+            <table class="l-border" id="datakhung" style="width: 100%; border-collapse: collapse;">
+                <colgroup class="l-border">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 55%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 20%;">
+                </colgroup>
+                <tbody class="l-border">
+                    <tr style="height: 36px;background-color: #90EE90;">
+                        <td class="l-center l-border"><b>Học kì</b></td>
+                        <td class="hov" title="Nhấn đúp để xem chi tiết" style="padding-left: 10px;" class="l-border"><b>Học phần</b></td>
+                        <td class="l-center l-border"><b>Số tín chỉ</b></td>
+                        <td class="l-center l-border"><b>Loại học phần</b></td>
+                    </tr>
+                    <tr class="l-border" style="line-height: 38px;" *ngFor="let i of this.khungct">
+                        <td class="l-center l-border">{{i.hocKi}}</td>
+                        <td (click)="showDialog(i.maMonHoc)" class="hov" title="Nhấn đúp để xem chi tiết" style="padding-left: 10px;">{{i.tenMonHoc}}</td>
+                        <td class="l-center l-border" *ngIf="i.soTCTCMax==null">{{i.soTinChi}}</td>
+                        <td class="l-center l-border" *ngIf="i.soTCTCMax!=null">{{i.soTCTCMax}}/{{i.soTinChi}}</td>
+                        <td class="l-center l-border" *ngIf="i.loaiMonHoc">BB</td>
+                        <td class="l-center l-border" *ngIf="!i.loaiMonHoc">TC</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <div class="m-dialog dialog-detail">
+        <div style="display: none;" id="dialog-add" class="m-dialog dialog-detail">
+            <div class="m-dialog dialog-modal"></div>
+            <div id="dc" class="dialog-content">
+                <div class="dialog-header">
+                    <div class="dialog-header-title">Chi tiết học phần</div>
+                    <div id="dialog-close" class="dialog-header-close">
+                        <button (click)="closeDialog()"></button>
+                    </div>
+                </div>
+                <div id="datachitiethp" style="padding-top: 15px;padding-left: 100px;" class="dialog-body">
+
+
+                </div>
+
+                <div style="position: absolute; bottom: 25px;right: 70px;" class="dialog-footer">
+                    <button style="border-radius: 5px;outline: none;" id="btnClose" (click)="closeDialog()" class="btn btn-success">Đóng</button>
+                </div>
+                <div style="position: absolute; bottom: 25px;left: 70px;" class="dialog-footer">
+                    <span><i>Tải giáo trình <a target="blank" href='https://www.google.com'>tại đây</a></i></span> </div>
+            </div>
+        </div>
+    </div>
+</div>
